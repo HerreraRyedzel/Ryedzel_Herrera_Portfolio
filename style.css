@@ -272,10 +272,106 @@ footer {
   color: var(--muted);
   font-size: 14px;
 }
-@media (max-width: 560px) {
-  .links a {
-    display: none}.links a.keep{display:inline;
+/* ===== RESPONSIVE: MENU BUTTON & NAV ACTIONS ===== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#menu {
+  display: none; /* only shown on small screens, see below */
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ===== RESPONSIVE: TABLETS AND PHONES (up to 820px wide) ===== */
+@media (max-width: 820px) {
+  /* Show the menu button, turn the links into a dropdown */
+  #menu {
+    display: inline-block;
   }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 22px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .links a {
+    padding: 12px 0;
+    font-size: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .links a:last-child {
+    border-bottom: none;
+  }
+
+  /* Tighter spacing */
+  .wrap {
+    padding: 0 18px;
+  }
+
+  section {
+    padding-top: 64px;
+  }
+
+  .hero {
+    padding-top: 48px;
+  }
+
+  .lead {
+    font-size: 17px;
+  }
+}
+
+/* ===== RESPONSIVE: SMALL PHONES (up to 480px wide) ===== */
+@media (max-width: 480px) {
+  .status {
+    border-radius: 14px;
+    line-height: 1.4;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  /* Full-width buttons that are easy to tap */
+  .cta .btn {
+    flex: 1 1 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .badge {
+    float: none;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Stop long words or emails from pushing the page sideways */
+body {
+  overflow-wrap: break-word;
 }
 
 /* ===== SMALL EXTRAS ===== */
