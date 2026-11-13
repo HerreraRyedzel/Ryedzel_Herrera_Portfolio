@@ -26,3 +26,24 @@ button.addEventListener('click', () => {
     localStorage.setItem('theme', next);
   } catch (e) {}
 });
+
+
+// ===== Mobile menu =====
+const menuButton = document.getElementById('menu');
+const navLinks = document.getElementById('nav-links');
+
+function setMenu(open) {
+  navLinks.classList.toggle('open', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.textContent = open ? '✕' : '☰';
+}
+
+// Open or close the menu with the ☰ button
+menuButton.addEventListener('click', () => {
+  setMenu(!navLinks.classList.contains('open'));
+});
+
+// Close the menu after tapping a link
+navLinks.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => setMenu(false));
+});
